@@ -17,9 +17,9 @@ namespace RestaurantApp_Team_35_37_38
     {
         static List<Restaurant> restaurants = new List<Restaurant>
     {
-        new Restaurant { Name = "ตี๋น้อย", Type = "Buffei", Rating = 4.2 },
-        new Restaurant { Name = "MK", Type = "Suki", Rating = 4.7 },
-        new Restaurant { Name = "Fuji", Type = "Japanese", Rating = 4.8 }
+        new Restaurant { Name = "ตี๋น้อย", Type = "Buffet", Rating = 4.2 },
+        new Restaurant { Name = "Eat Am Are", Type = "SteakHouse", Rating = 4.7 },
+        new Restaurant { Name = "Hajibang", Type = "Japanese", Rating = 4.8 }
     };
 
         static void Main(string[] args)
