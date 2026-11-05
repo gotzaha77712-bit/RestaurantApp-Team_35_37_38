@@ -64,7 +64,17 @@ namespace RestaurantApp_Team_35_37_38
         // คน B รับผิดชอบ
         static void ShowGoodRating()
         {
-            Console.WriteLine("Not completed");
+            Console.WriteLine("\n===== Good Rating (4.5 ขึ้นไป) =====");
+            var goodRestaurants = restaurants.Where(r => r.Rating >= 4.5).ToList();
+            if (goodRestaurants.Count == 0)
+            {
+                Console.WriteLine("ไม่พบร้านที่คะแนนตั้งแต่ 4.5 ขึ้นไป");
+                return;
+            }
+            foreach (var r in goodRestaurants)
+            {
+                Console.WriteLine($"{r.Name} | {r.Type} | Rating: {r.Rating}");
+            }
         }
 
         // คน C รับผิดชอบ
