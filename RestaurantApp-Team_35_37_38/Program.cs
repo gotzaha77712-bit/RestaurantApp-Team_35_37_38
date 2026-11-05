@@ -56,9 +56,24 @@ namespace RestaurantApp_Team_35_37_38
         }
 
         // คน A รับผิดชอบ
+        // คน A รับผิดชอบ
         static void AddRestaurant()
         {
-            Console.WriteLine("Not completed");
+            Console.Write("Restaurant Name: ");
+            string name = Console.ReadLine();
+
+            Console.Write("Type: ");
+            string type = Console.ReadLine();
+
+            Console.Write("Rating (0-5): ");
+            double rating;
+            while (!double.TryParse(Console.ReadLine(), out rating) || rating < 0 || rating > 5)
+            {
+                Console.Write("Invalid rating, try again (0-5): ");
+            }
+
+            restaurants.Add(new Restaurant { Name = name, Type = type, Rating = rating });
+            Console.WriteLine("Restaurant added!");
         }
 
         // คน B รับผิดชอบ
@@ -70,7 +85,20 @@ namespace RestaurantApp_Team_35_37_38
         // คน C รับผิดชอบ
         static void ShowSummary()
         {
-            Console.WriteLine("Not completed");
+            {
+                if (restaurants.Count == 0)
+                {
+                    Console.WriteLine("No restaurants.");
+                    return;
+                }
+
+                var best = restaurants.OrderByDescending(r => r.Rating).First();
+                var worst = restaurants.OrderBy(r => r.Rating).First();
+
+                Console.WriteLine("\n--- Summary ---");
+                Console.WriteLine($"Highest: {best.Name} ({best.Type}) - {best.Rating}");
+                Console.WriteLine($"Lowest : {worst.Name} ({worst.Type}) - {worst.Rating}");
+            }
         }
     }
 
