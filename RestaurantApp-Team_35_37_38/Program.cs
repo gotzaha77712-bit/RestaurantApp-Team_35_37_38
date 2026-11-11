@@ -56,8 +56,10 @@ namespace RestaurantApp_Team_35_37_38
         }
 
         // คน A รับผิดชอบ
+        // คน A รับผิดชอบ
         static void AddRestaurant()
         {
+
         
             {
                 Console.WriteLine("\n--- Add Restaurant ---");
@@ -107,13 +109,36 @@ namespace RestaurantApp_Team_35_37_38
         // คน B รับผิดชอบ
         static void ShowGoodRating()
         {
-            Console.WriteLine("Not completed");
+            Console.WriteLine("\n===== Good Rating (4.5 ขึ้นไป) =====");
+            var goodRestaurants = restaurants.Where(r => r.Rating >= 4.5).ToList();
+            if (goodRestaurants.Count == 0)
+            {
+                Console.WriteLine("ไม่พบร้านที่คะแนนตั้งแต่ 4.5 ขึ้นไป");
+                return;
+            }
+            foreach (var r in goodRestaurants)
+            {
+                Console.WriteLine($"{r.Name} | {r.Type} | Rating: {r.Rating}");
+            }
         }
 
         // คน C รับผิดชอบ
         static void ShowSummary()
         {
-            Console.WriteLine("Not completed");
+            {
+                if (restaurants.Count == 0)
+                {
+                    Console.WriteLine("No restaurants.");
+                    return;
+                }
+
+                var best = restaurants.OrderByDescending(r => r.Rating).First();
+                var worst = restaurants.OrderBy(r => r.Rating).First();
+
+                Console.WriteLine("\n--- Summary ---");
+                Console.WriteLine($"Highest: {best.Name} ({best.Type}) - {best.Rating}");
+                Console.WriteLine($"Lowest : {worst.Name} ({worst.Type}) - {worst.Rating}");
+            }
         }
     }
 
